@@ -1,34 +1,54 @@
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg p-4 container">
+<mdb-navbar SideClass="navbar navbar-expand-lg
+navbar-dark red  lighten-1" >
 
-  <!-- Collapsible content -->
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">GULA</a></mdb-navbar-brand>
   <links>
 
     <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect> +256 705495719</a>
+    <ul class="navbar-nav mr-auto navbar-brand">
+      <li class="nav-item active">
+        <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>info@deo.muhwezi.com</a>
+        <a class="nav-link waves-light" mdbWavesEffect>Features</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+      </li>
+
     </ul>
     <!-- Links -->
-    <div class="nav-item">
-      Login
-    </div>
-    <!-- Search form -->
-    <div class="nav-item dropdown "  dropdown>
-      <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-        My Account<span class="caret"></span></a>
-      <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Cart</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Profile</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Products</a>
-        <div class="divider dropdown-divider"></div>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Logout</a>
-      </div>
-    </div>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <button mdbBtn type="button" color="white" outline="true" class="p-1 btn-long"  mdbWavesEffect>Login</button>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button"
+           class="nav-link waves-light" mdbWavesEffect>
+          45<mdb-icon fas icon="bell"></mdb-icon>
+        </a>
+
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <ul>
+            <li>Notification</li>
+            <li>Notification</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item avatar dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""
+               class="img-fluid rounded-circle " width="20">
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Profile</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cart</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+        </div>
+      </li>
+    </ul>
   </links>
   <!-- Collapsible content -->
 </mdb-navbar>
