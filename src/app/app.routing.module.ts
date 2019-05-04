@@ -5,7 +5,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
 
 const routes: Routes = [
-  {path: 'home' , component: LandingPageComponent},
+  {path: '' , component: LandingPageComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
