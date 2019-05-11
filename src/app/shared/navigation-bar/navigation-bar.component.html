@@ -3,7 +3,7 @@
 navbar-dark red  lighten-1" >
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">GULA</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="/">GULA</a></mdb-navbar-brand>
   <links>
 
     <!-- Links -->
@@ -23,7 +23,7 @@ navbar-dark red  lighten-1" >
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <button mdbBtn type="button" color="white" outline="true" class="p-1 btn-long"  mdbWavesEffect>Login</button>
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
+      <li class="nav-item dropdown" dropdown *ngIf="authenticated">
         <a dropdownToggle mdbWavesEffect type="button"
            class="nav-link waves-light" mdbWavesEffect>
           45<mdb-icon fas icon="bell"></mdb-icon>
@@ -37,7 +37,7 @@ navbar-dark red  lighten-1" >
         </div>
       </li>
 
-      <li class="nav-item avatar dropdown" dropdown>
+      <li class="nav-item avatar dropdown" dropdown *ngIf="authenticated">
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""
                class="img-fluid rounded-circle " width="20">

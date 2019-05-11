@@ -1,0 +1,70 @@
+<div class="container mt-5 p-5" [ngClass]="{
+'right-panel-active': showSignup
+}" id="container ">
+  <div class="form-container sign-up-container">
+    <form #signupForm="ngForm" (ngSubmit)="onSubmitSignUp(signupForm)">
+      <h1>Create Account</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your email for registration</span>
+      <input ngModel name="username"  type="text" placeholder="Username" #username="ngModel"  required/>
+      <span class="text-danger" *ngIf="usernameTaken">Username Taken</span>
+      <span class="text-danger" *ngIf="username.touched && username.invalid">username required</span>
+      <input email name="email" ngModel placeholder="Email" required type="email" #email="ngModel" />
+      <span class="text-danger" *ngIf="email.touched && email.invalid">Please enter valid email</span>
+      <input ngModel name="password" type="password" placeholder="Password" #password ="ngModel"  required />
+      <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid password</span>
+      <input ngModel name="confirm" type="password" placeholder="Confirm Password"  #confirm="ngModel" required />
+      <span class="text-danger" *ngIf="confirm.touched && confirm.invalid">
+        Please enter confirm password and must match with password
+      </span>
+      <span *ngIf="passwordMatch" class="text-danger">
+        <p>Passwords Must Match</p>
+      </span>
+      <button class="btn btn-danger"
+              [disabled]="signupForm.invalid || loading">
+         Sign Up
+        </button>
+      <div class="spinner-border text-danger" role="status" *ngIf="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form #loginForm="ngForm">
+      <h1>Sign in</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your account</span>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <a href="#">Forgot your password?</a>
+      <button class="btn btn-danger">
+        Login
+      </button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost btn btn-white" id="signIn" (click)="toggle()">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost btn btn-white" id="signUp" (click)="toggle()">Sign Up </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

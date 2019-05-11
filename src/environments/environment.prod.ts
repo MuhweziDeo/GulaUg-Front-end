@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiURl: 'https://gula-ug-api.herokuapp.com/'
 };

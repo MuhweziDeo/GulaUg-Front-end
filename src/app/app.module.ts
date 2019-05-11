@@ -1,13 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import {FormsModule} from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {NotFoundComponent} from './not-found/not-found.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavigationBarComponent } from './shared/navigation-bar/navigation-bar.component';
 import { HeaderComponent } from './header/header.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import {AuthService} from './auth/signup/__services__/signup.service';
+
 
 @NgModule({
   declarations: [
@@ -15,15 +21,21 @@ import { HeaderComponent } from './header/header.component';
     NotFoundComponent,
     LandingPageComponent,
     NavigationBarComponent,
-    HeaderComponent
+    HeaderComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
 
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
