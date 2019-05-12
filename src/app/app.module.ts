@@ -12,7 +12,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavigationBarComponent } from './shared/navigation-bar/navigation-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import {AuthService} from './auth/signup/__services__/signup.service';
+import {AuthService} from './auth/__services__/auth.service';
+import { EmailConfirmationComponent } from './auth/email-confirmation/email-confirmation.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {AuthService} from './auth/signup/__services__/signup.service';
     LandingPageComponent,
     NavigationBarComponent,
     HeaderComponent,
-    SignupComponent
+    SignupComponent,
+    EmailConfirmationComponent
   ],
   imports: [
     BrowserModule,
