@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AuthService} from './__services__/signup.service';
+import { AuthService} from '../__services__/auth.service';
 import { Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 
@@ -54,16 +54,6 @@ export class SignupComponent implements OnInit {
       this.loading = false;
       this.router.navigate(['/']);
     }, error => {
-      // switch (error.error.message) {
-      //   case 'username already taken':
-      //     this.loading = false
-      //     return this.usernameTaken = true;
-      //   case 'email already taken':
-      //     this.loading = false;
-      //     return  this.emailTaken = true;
-      //   default:
-      //     return this.loading = false;
-      // }
       this.loading = false;
       this.toastr.error(error.error.message); });
   }

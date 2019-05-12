@@ -21,7 +21,7 @@ navbar-dark red  lighten-1" >
     </ul>
     <!-- Links -->
     <ul class="navbar-nav ml-auto nav-flex-icons">
-      <button mdbBtn type="button" color="white" outline="true" class="p-1 btn-long"  mdbWavesEffect>Login</button>
+      <button *ngIf="!authenticated" mdbBtn type="button" color="white" outline="true" class="p-1 btn-long"  mdbWavesEffect>Login</button>
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown *ngIf="authenticated">
         <a dropdownToggle mdbWavesEffect type="button"
@@ -39,7 +39,9 @@ navbar-dark red  lighten-1" >
 
       <li class="nav-item avatar dropdown" dropdown *ngIf="authenticated">
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""
+          <img [src]="image || 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=' +
+           'Blank&facialHairType=Blank&clotheType=CollarSweater&clotheColor=' +
+            'Gray01&eyeType=Default&eyebrowType=Default&mouthType=Serious&skinColor=Light'" alt=""
                class="img-fluid rounded-circle " width="20">
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
