@@ -28,10 +28,17 @@
             <i class="fas fa-search" aria-hidden="true"></i>
           </form>
         </div>
-        <div class="col-md-4 mt-2">
-          <a routerLink="/signup" mdbBtn color="danger" mdbWavesEffect>Get Started
+        <div class="col-md-4 mt-2" *ngIf="!authenticated && !loading;">
+          <a [routerLink]="['signup']" [queryParams]="{ page: 'signup'}" mdbBtn color="danger" mdbWavesEffect>Get Started
           </a>
         </div>
+        <div class="col-md-4 mt-2" *ngIf="authenticated && !loading;">
+          <a [routerLink]="['shopping']" [queryParams]="{ page: 'signup'}" class="text-danger" mdbBtn color="white" mdbWavesEffect>Start Shopping
+          </a>
+        </div>
+          <div class="spinner-border text-danger mt-4" role="status" *ngIf="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
       </div>
 
     </div>
