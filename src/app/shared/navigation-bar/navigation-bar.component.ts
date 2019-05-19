@@ -11,17 +11,27 @@ export class NavigationBarComponent implements OnInit {
   authenticated = false;
   public image: string;
   public username: string;
-  constructor(private authService: AuthService) { }
+  loading = true;
   authorizationSubscription: Subscription;
 
+   constructor(private authService: AuthService) {
+     this.authService.isLoggedIn();
+  }
+
   ngOnInit() {
-    this.authorizationSubscription = this.authService.authorization.subscribe(data => {
+     this.authorizationSubscription = this.authService.authorization.subscribe(data => {
       const { image, username }: any = data;
       if (username || image ) {
         this.authenticated = true;
+        this.loading = false;
       }
+      this.loading = false;
     });
-
+    // this.loading = false;
+  }
+  logOut() {
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 
 }
