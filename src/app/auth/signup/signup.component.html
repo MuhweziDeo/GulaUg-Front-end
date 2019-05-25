@@ -41,7 +41,7 @@
       <span class="text-danger" *ngIf="email.touched && email.invalid">Valid email required</span>
       <input ngModel name="password" type="password" placeholder="Password" required #password="ngModel" />
       <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid password</span>
-      <a href="#">Forgot your password?</a>
+      <a routerLink="/password-reset">Forgot your password?</a>
       <button [disabled]="loginForm.invalid || loading" class="btn btn-danger">
         Login
       </button>
