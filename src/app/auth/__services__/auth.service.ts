@@ -40,6 +40,11 @@ export class AuthService {
   public loginUser(User: LoginModel): Observable<any> {
     return this.http.post(`${this.baseURL}auth/login`, User, this.headers);
   }
+
+  public socialLogin(platformName: string, tokens: any): Observable<any> {
+    return this.http.post(`${this.baseURL}auth/${platformName}`, tokens, this.headers);
+  }
+
   public async isLoggedIn() {
     const token = localStorage.getItem('token');
     if (!token) { return this.authorizeUser({}); }
