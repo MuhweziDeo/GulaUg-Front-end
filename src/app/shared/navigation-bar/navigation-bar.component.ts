@@ -11,7 +11,7 @@ export class NavigationBarComponent implements OnInit {
   authenticated = false;
   public image: string;
   public username: string;
-  loading = true;
+  loading = false;
   authorizationSubscription: Subscription;
 
    constructor(private authService: AuthService
