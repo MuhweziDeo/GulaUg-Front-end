@@ -1,0 +1,77 @@
+<div class='container mt-5'>
+  <div class="row">
+    <div class="col-md-8 shadow-lg p-5">
+      <h2>Edit Profile</h2>
+      <!-- Extended default form grid -->
+      <form #updateForm="ngForm" (ngSubmit)="updateProfile(updateForm)">
+        <!-- Grid row -->
+        <div class="form-row">
+          <!-- Default input -->
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input [(ngModel)]="email" name="email" type="email" 
+            class="form-control" disabled placeholder="Email" required>
+          </div>
+          <!-- Default input -->
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Username</label>
+            <input type="text" [(ngModel)]="username" name="username" class="form-control" disabled id="username"
+              placeholder="username" required>
+          </div>
+        </div>
+        <!-- Grid row -->
+
+        <!-- Default input -->
+        <div class="form-group">
+          <label for="inputAddress">firstName</label>
+          <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control" id="firstName"
+            placeholder="firstName" required>
+        </div>
+        <!-- Default input -->
+        <div class="form-group">
+          <label for="inputAddress2">lastName </label>
+          <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" id="lastName"
+            placeholder="lastName" required>
+        </div>
+        <!-- Grid row -->
+        <div class="form-row">
+          <!-- Default input -->
+          <div class="form-group col-md-6">
+            <label for="inputCity">country</label>
+            <input type="text" [(ngModel)]="country" name="country" class="form-control" id="country"
+              placeholder="country" required>
+          </div>
+          <!-- Default input -->
+          <div class="form-group col-md-6">
+            <label for="inputZip">city</label>
+            <input type="text" [(ngModel)]="city" 
+            name="city" class="form-control" id="city" placeholder="city" required>
+          </div>
+        </div>
+        <!-- Grid row -->
+        <button type="submit" [disabled]="updateForm.invalid && !loading" class="btn btn-outline-danger btn-md">Update</button>
+      </form>
+
+    </div>
+
+    <div class="col-md-4 ">
+      <!-- Card Regular -->
+      <div class="card">
+        <!-- Card image -->
+        <div class="view">
+          <img class="card-img-top" src="{{image}}" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer text-muted text-center">
+          <button class="btn btn-outline-danger">Upload Profile</button>
+        </div>
+
+      </div>
+      <!-- Card Regular -->
+    </div>
+  </div>
+
+</div>

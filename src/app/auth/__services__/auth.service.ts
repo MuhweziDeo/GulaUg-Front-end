@@ -45,7 +45,7 @@ export class AuthService {
     return this.http.post(`${this.baseURL}auth/${platformName}`, tokens, this.headers);
   }
 
-  public async isLoggedIn() {
+  public isLoggedIn() {
     const token = localStorage.getItem('token');
     if (!token) { return this.authorizeUser({}); }
     const newHeaders =  {

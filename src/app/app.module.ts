@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {FormsModule} from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
@@ -12,11 +12,15 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavigationBarComponent } from './shared/navigation-bar/navigation-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import {AuthService} from './auth/__services__/auth.service';
+import { AuthService } from './auth/__services__/auth.service';
 import { EmailConfirmationComponent } from './auth/email-confirmation/email-confirmation.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { SocialAuthenticationComponent } from './auth/social-authentication/social-authentication.component';
 import { provideConfig } from './auth/social-authentication/social-authentication.config';
+import { ProfileComponent } from './user/profile/profile.component';
+import { TokenInterceptor } from './auth/token.interceptor';
+
+
 
 
 
@@ -29,7 +33,8 @@ import { provideConfig } from './auth/social-authentication/social-authenticatio
     HeaderComponent,
     SignupComponent,
     EmailConfirmationComponent,
-    SocialAuthenticationComponent
+    SocialAuthenticationComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,13 +46,17 @@ import { provideConfig } from './auth/social-authentication/social-authenticatio
     ToastrModule.forRoot(),
     SocialLoginModule
 
-
   ],
   providers: [
     AuthService,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
