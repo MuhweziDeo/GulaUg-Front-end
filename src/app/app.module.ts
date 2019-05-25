@@ -14,6 +14,10 @@ import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import {AuthService} from './auth/__services__/auth.service';
 import { EmailConfirmationComponent } from './auth/email-confirmation/email-confirmation.component';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { SocialAuthenticationComponent } from './auth/social-authentication/social-authentication.component';
+import { provideConfig } from './auth/social-authentication/social-authentication.config';
+
 
 
 @NgModule({
@@ -24,7 +28,8 @@ import { EmailConfirmationComponent } from './auth/email-confirmation/email-conf
     NavigationBarComponent,
     HeaderComponent,
     SignupComponent,
-    EmailConfirmationComponent
+    EmailConfirmationComponent,
+    SocialAuthenticationComponent
   ],
   imports: [
     BrowserModule,
@@ -33,11 +38,18 @@ import { EmailConfirmationComponent } from './auth/email-confirmation/email-conf
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SocialLoginModule
 
 
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService} from '../__services__/auth.service';
+import { AuthService as AuthenticationService } from '../__services__/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+
 
 export interface SignUpModel {
   username: string;
@@ -20,10 +21,10 @@ export class SignupComponent implements OnInit {
   passwordMatch = false;
   loading = false;
   usernameTaken = false;
-  constructor(private authService: AuthService,
+  constructor(private authService: AuthenticationService,
               private router: Router,
-              private toastr: ToastrService,
-              private activated: ActivatedRoute
+              private toast: ToastrService,
+              private activated: ActivatedRoute,
               ) { }
 
   ngOnInit() {
@@ -57,13 +58,13 @@ export class SignupComponent implements OnInit {
       return this.passwordMatch = true;
     }
     this.authService.signUpUser(data).subscribe(res => {
-      this.toastr.success(res.message);
+      this.toast.success(res.message);
       form.reset();
       this.loading = false;
       this.router.navigate(['/']);
     }, error => {
       this.loading = false;
-      this.toastr.error(error.error.message); });
+      this.toast.error(error.error.message); });
   }
 
   onSubmitLogin(form: NgForm) {
@@ -75,7 +76,7 @@ export class SignupComponent implements OnInit {
       const { accessToken, data: { username }, success} = res;
       if (success) {
         form.reset();
-        this.toastr.success('login success');
+        this.toast.success('login success');
         localStorage.setItem('token', accessToken);
         localStorage.setItem('username', username);
         this.authService.authorizeUser({ username });
@@ -83,8 +84,10 @@ export class SignupComponent implements OnInit {
       }
     }, error => {
       this.loading = false;
-      this.toastr.error(error.error.message);
+      this.toast.error(error.error.message);
     });
   }
+
+
 
 }

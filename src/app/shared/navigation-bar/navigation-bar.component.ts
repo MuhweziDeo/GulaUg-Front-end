@@ -14,7 +14,8 @@ export class NavigationBarComponent implements OnInit {
   loading = true;
   authorizationSubscription: Subscription;
 
-   constructor(private authService: AuthService) {
+   constructor(private authService: AuthService
+   ) {
      this.authService.isLoggedIn();
   }
 
@@ -24,10 +25,11 @@ export class NavigationBarComponent implements OnInit {
       if (username || image ) {
         this.authenticated = true;
         this.loading = false;
+        this.image = image;
+        this.username = username;
       }
       this.loading = false;
     });
-    // this.loading = false;
   }
   logOut() {
     localStorage.removeItem('token');

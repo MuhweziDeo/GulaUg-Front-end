@@ -3,13 +3,10 @@
 }" id="container ">
   <div class="form-container sign-up-container">
     <form #signupForm="ngForm" (ngSubmit)="onSubmitSignUp(signupForm)">
-      <h1>Create Account</h1>
-      <div class="social-container">
-        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <span>or use your email for registration</span>
+      <h2>Create Account</h2>
+      <p>Using Social Plaforms</p>
+     <app-social-authentication></app-social-authentication>
+      <p>Or use your email for registration</p>
       <input ngModel name="username"  type="text" placeholder="Username" #username="ngModel"  required/>
       <span class="text-danger" *ngIf="usernameTaken">Username Taken</span>
       <span class="text-danger" *ngIf="username.touched && username.invalid">username required</span>
@@ -36,13 +33,10 @@
   </div>
   <div class="form-container sign-in-container">
     <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
-      <h1>Sign in</h1>
-      <div class="social-container">
-        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <span>or use your account</span>
+      <h2>Log In</h2>
+      <p>With any of the social accounts</p>
+      <app-social-authentication></app-social-authentication>
+      <p>or use your email</p>
       <input email ngModel name="email" type="email" placeholder="Email" required #email="ngModel" />
       <span class="text-danger" *ngIf="email.touched && email.invalid">Valid email required</span>
       <input ngModel name="password" type="password" placeholder="Password" required #password="ngModel" />
