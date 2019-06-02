@@ -7,27 +7,19 @@ navbar-dark red  lighten-1" >
   <links>
 
     <!-- Links -->
-    <ul class="navbar-nav mr-auto navbar-brand">
-      <li class="nav-item active">
-        <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
-      </li>
-
-    </ul>
     <!-- Links -->
 
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <div class="spinner-border text-white" role="status" *ngIf="loading">
         <span class="sr-only">Loading...</span>
       </div>
-      <a routerLink="/signup" *ngIf="!authenticated && !loading"
-         mdbBtn type="button" color="white" outline="true" class="p-1 btn-long"
-              mdbWavesEffect>Login </a>
+      <a routerLink="/login" *ngIf="!authenticated && !loading"
+      mdbBtn color="white" outline="true" size="sm"
+       class="align-middle waves-light" mdbWavesEffect type="button">Login </a>
+
+       <a [routerLink]="['signup']" *ngIf="!authenticated && !loading" mdbBtn color="white"
+        mdbWavesEffect size="sm">Get Started
+        </a>
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown *ngIf="authenticated">
         <a dropdownToggle mdbWavesEffect type="button"

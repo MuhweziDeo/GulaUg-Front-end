@@ -21,26 +21,16 @@ export class SignupComponent implements OnInit {
   passwordMatch = false;
   loading = false;
   usernameTaken = false;
+  emailTaken = true;
   constructor(private authService: AuthenticationService,
               private router: Router,
               private toast: ToastrService,
               private activated: ActivatedRoute,
               ) { }
 
-  ngOnInit() {
-    this.showSignup = false;
-    this.activated.queryParams.subscribe(qParams => {
-      if (qParams.page === 'signup') {
-       this.toggle();
-      }
-    });
+  ngOnInit() { }
 
-  }
-
-  toggle() {
-    this.showSignup = !this.showSignup;
-  }
-
+  
    onSubmitSignUp(form: NgForm) {
     this.loading = true;
     this.passwordMatch = false;
@@ -67,26 +57,7 @@ export class SignupComponent implements OnInit {
       this.toast.error(error.error.message); });
   }
 
-  onSubmitLogin(form: NgForm) {
-    this.loading = true;
-    const { value: { email, password } } = form;
-    const data = { email, password };
-    this.authService.loginUser(data).subscribe(res => {
-      this.loading = false;
-      const { accessToken, data: { username }, success} = res;
-      if (success) {
-        form.reset();
-        this.toast.success('login success');
-        localStorage.setItem('token', accessToken);
-        localStorage.setItem('username', username);
-        this.authService.authorizeUser({ username });
-        this.router.navigate(['']);
-      }
-    }, error => {
-      this.loading = false;
-      this.toast.error(error.error.message);
-    });
-  }
+
 
 
 

@@ -21,6 +21,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { PasswordResetRequestComponent } from './auth/password-reset/password-reset-request/password-reset-request.component';
 import { PasswordResetConfirmComponent } from './auth/password-reset/password-reset-confirm/password-reset-confirm.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -39,6 +40,7 @@ import { PasswordResetConfirmComponent } from './auth/password-reset/password-re
     ProfileComponent,
     PasswordResetRequestComponent,
     PasswordResetConfirmComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
