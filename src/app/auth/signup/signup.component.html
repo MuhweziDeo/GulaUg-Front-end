@@ -1,69 +1,69 @@
-<div class="container mt-5 p-5" [ngClass]="{
-'right-panel-active': showSignup
-}" id="container ">
-  <div class="form-container sign-up-container">
-    <form #signupForm="ngForm" (ngSubmit)="onSubmitSignUp(signupForm)">
-      <h2>Create Account</h2>
-      <p>Using Social Plaforms</p>
-     <app-social-authentication></app-social-authentication>
-      <p>Or use your email for registration</p>
-      <input ngModel name="username"  type="text" placeholder="Username" #username="ngModel"  required/>
-      <span class="text-danger" *ngIf="usernameTaken">Username Taken</span>
-      <span class="text-danger" *ngIf="username.touched && username.invalid">username required</span>
-      <input email name="email" ngModel placeholder="Email" required type="email" #email="ngModel" />
-      <span class="text-danger" *ngIf="email.touched && email.invalid">Please enter valid email</span>
-      <input ngModel name="password" type="password" placeholder="Password" #password ="ngModel"  required />
-      <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid password</span>
-      <input ngModel name="confirm" type="password" placeholder="Confirm Password"  #confirm="ngModel" required />
-      <span class="text-danger" *ngIf="confirm.touched && confirm.invalid">
-        Please enter confirm password and must match with password
-      </span>
-      <span *ngIf="passwordMatch" class="text-danger">
-        <p>Passwords Must Match</p>
-      </span>
-      <button class="btn btn-danger"
-              [disabled]="signupForm.invalid || loading">
-         Sign Up
-        </button>
-      <div class="spinner-border text-danger" role="status" *ngIf="loading">
-        <span class="sr-only">Loading...</span>
-      </div>
+<link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-sb-admin-2/css/sb-admin-2.min.css">
+<div class="container">
 
-    </form>
-  </div>
-  <div class="form-container sign-in-container">
-    <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
-      <h2>Log In</h2>
-      <p>With any of the social accounts</p>
-      <app-social-authentication></app-social-authentication>
-      <p>or use your email</p>
-      <input email ngModel name="email" type="email" placeholder="Email" required #email="ngModel" />
-      <span class="text-danger" *ngIf="email.touched && email.invalid">Valid email required</span>
-      <input ngModel name="password" type="password" placeholder="Password" required #password="ngModel" />
-      <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid password</span>
-      <a routerLink="/password-reset">Forgot your password?</a>
-      <button [disabled]="loginForm.invalid || loading" class="btn btn-danger">
-        Login
-      </button>
-      <div class="spinner-border text-danger" role="status" *ngIf="loading">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </form>
-  </div>
-  <div class="overlay-container">
-    <div class="overlay">
-      <div class="overlay-panel overlay-left">
-        <h1>Welcome Back!</h1>
-        <p>To keep connected with us please login with your personal info</p>
-        <button class="ghost btn btn-white" id="signIn" (click)="toggle()">Sign In</button>
-      </div>
-      <div class="overlay-panel overlay-right">
-        <h1>Hello, Friend!</h1>
-        <p>Enter your personal details and start journey with us</p>
-        <button class="ghost btn btn-white" id="signUp" (click)="toggle()">Sign Up </button>
+  <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+      <!-- Nested Row within Card Body -->
+      <div class="row">
+        <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+        <div class="col-lg-7">
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+            </div>
+            <form class="user" #signupForm="ngForm" (ngSubmit)="onSubmitSignUp(signupForm)">
+              <div class="form-group">
+                <input ngModel name="username" type="text" placeholder="Username" #username="ngModel" required
+                  class="form-control form-control-user">
+                <span class="text-danger" *ngIf="usernameTaken">Username Taken</span>
+                <span class="text-danger" *ngIf="username.touched && username.invalid">username required</span>
+              </div>
+
+              <div class="form-group">
+                <input type="email" email name="email" ngModel required type="email" #email="ngModel" 
+                class="form-control form-control-user" 
+                  placeholder="Email Address">
+                  <span class="text-danger" *ngIf="email.touched && email.invalid">Please enter valid email</span>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input ngModel name="password" type="password" placeholder="Password" #password="ngModel" required
+                   type="password" class="form-control form-control-user">
+                   <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid password</span>
+                </div>
+
+                <div class="col-sm-6">
+                  <input ngModel name="confirm" type="password" #confirm="ngModel" required
+                  type="password" class="form-control form-control-user"
+                    placeholder="Repeat Password">
+                    <span class="text-danger" *ngIf="confirm.touched && confirm.invalid">
+                      Please enter confirm password and must match with password
+                    </span>
+                </div>
+                <span *ngIf="passwordMatch" class="text-danger">
+                  <p>Passwords Must Match</p>
+                </span>
+              </div>
+              <div class="spinner-border text-danger" role="status" *ngIf="loading">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <button [disabled]="signupForm.invalid || loading"  class="btn btn-primary btn-user btn-block">
+                Register Account
+              </button>
+              <hr>
+              <app-social-authentication></app-social-authentication>
+            </form>
+            <hr>
+            <div class="text-center">
+              <a class="small" routerLink='/password-reset'>Forgot Password?</a>
+            </div>
+            <div class="text-center">
+              <a class="small" routerLink='/login'>Already have an account? Login!</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
-
-

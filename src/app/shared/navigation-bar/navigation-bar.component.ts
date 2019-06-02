@@ -20,6 +20,8 @@ export class NavigationBarComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!localStorage.getItem('token')) return;
+    this.loading = true;
      this.authorizationSubscription = this.authService.authorization.subscribe(data => {
       const { image, username }: any = data;
       if (username || image ) {
@@ -33,7 +35,7 @@ export class NavigationBarComponent implements OnInit {
   }
   logOut() {
     localStorage.removeItem('token');
-    window.location.reload();
+    this.authenticated = false;
   }
 
 }
