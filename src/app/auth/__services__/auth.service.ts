@@ -13,7 +13,7 @@ export class LoginModel {
 export class AuthService {
   private signUpUrl: string;
   private baseURL: string;
-  public authorization: any = new  Subject();
+  public authorization: Subject<any> = new  Subject();
   headers = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -57,9 +57,9 @@ export class AuthService {
       if (res.data) {
         const image = res.data.image;
         const username = res.data.User.username;
-        this.authorizeUser({ image, username } );
+        return this.authorizeUser({ image, username } );
       }
-      this.authorizeUser({});
+      return this.authorizeUser({});
     });
   }
 }

@@ -22,6 +22,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { PasswordResetRequestComponent } from './auth/password-reset/password-reset-request/password-reset-request.component';
 import { PasswordResetConfirmComponent } from './auth/password-reset/password-reset-confirm/password-reset-confirm.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AppEventService } from './shared/__services__/app-events.service';
 
 
 
@@ -54,6 +55,7 @@ import { LoginComponent } from './auth/login/login.component';
 
   ],
   providers: [
+    AppEventService,
     AuthService,
     {
       provide: AuthServiceConfig,
@@ -63,7 +65,7 @@ import { LoginComponent } from './auth/login/login.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })
