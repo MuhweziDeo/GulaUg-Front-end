@@ -23,17 +23,17 @@ export class ProfileComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private toast: ToastrService ) {}
-  
+
   fetchProfile(): void {
     this.profileService.getUserProfile().subscribe(res => {
-      this.email = res.data.user.email
-      this.username = res.data.user.username
-      this.firstName = res.data.profile.firstName
-      this.lastName = res.data.profile.lastName
-      this.city = res.data.profile.city
-      this.image = res.data.profile.image
-      this.country = res.data.profile.country
-    })
+      this.email = res.data.User.email;
+      this.username = res.data.User.username;
+      this.firstName = res.data.firstName;
+      this.lastName = res.data.lastName;
+      this.city = res.data.city;
+      this.image = res.data.image;
+      this.country = res.data.country;
+    });
   }
   ngOnInit() {
    this.fetchProfile();
@@ -41,17 +41,15 @@ export class ProfileComponent implements OnInit {
 
   updateProfile(form: NgForm) {
     this.loading = true;
-    this.profileService.updateProfile(this.username,form.value).subscribe(
+    this.profileService.updateProfile(this.username, form.value).subscribe(
       res => {
         this.loading = false;
-        if(res.success) {
+        if (res.success) {
           this.toast.success(res.message);
         }
-      },error => this.toast.error(error.error.message)
-    )
+      }, error => this.toast.error(error.error.message)
+    );
   }
-  ngOnChanges() {
-    console.log('changing')
-  }
+
 
 }

@@ -20,9 +20,9 @@ export class NavigationBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(!localStorage.getItem('token')) return;
+    if (!localStorage.getItem('token')) { return; }
     this.loading = true;
-     this.authorizationSubscription = this.authService.authorization.subscribe(data => {
+    this.authorizationSubscription = this.authService.authorization.subscribe(data => {
       const { image, username }: any = data;
       if (username || image ) {
         this.authenticated = true;

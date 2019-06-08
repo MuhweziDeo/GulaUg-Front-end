@@ -55,8 +55,8 @@ export class AuthService {
     };
     return this.http.get<any>(`${this.baseURL}auth/user/`, newHeaders).subscribe(res => {
       if (res.data) {
-        const image = res.data.profile.image;
-        const username = res.data.user.username;
+        const image = res.data.image;
+        const username = res.data.User.username;
         this.authorizeUser({ image, username } );
       }
       this.authorizeUser({});

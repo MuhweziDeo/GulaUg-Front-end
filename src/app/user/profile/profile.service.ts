@@ -10,15 +10,15 @@ export class ProfileService {
   profileUrl: string;
   constructor(
     private http: HttpClient
-  ) { 
+  ) {
     const {apiURl} = environment;
-    this.profileUrl = `${apiURl}auth/`
+    this.profileUrl = `${apiURl}auth/`;
   }
 
   getUserProfile(): Observable<any> {
     return this.http.get(`${this.profileUrl}user`);
   }
-  updateProfile(username: string, data:object): Observable<any> {
-    return this.http.put(`${this.profileUrl}profile/${username}`, data)
+  updateProfile(username: string, data: object): Observable<any> {
+    return this.http.put(`${this.profileUrl}profile/${username}`, data);
   }
 }

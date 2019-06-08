@@ -31,25 +31,25 @@ export class SocialAuthenticationComponent implements OnInit {
     }).subscribe(res => {
       localStorage.setItem('token', res.token);
       this.router.navigate(['/']);
-      this.toast.success(`Login Successful ${data.firstName}`,'', {
-        positionClass:'toast-top-center'
-      })
+      this.toast.success(`Login Successful ${data.firstName}`, '', {
+        positionClass: 'toast-top-center'
+      });
       }
     );
   }
   signInWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
-        this.activateSocialSign(data,'google');
+        this.activateSocialSign(data, 'google');
       }
-    ).catch(error =>this.toast.error(error));
+    ).catch(error => this.toast.error(error));
   }
   signInWithFB(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
-        this.activateSocialSign(data, 'facebook');   
+        this.activateSocialSign(data, 'facebook');
       }
-    ).catch(error =>this.toast.error(error));
+    ).catch(error => this.toast.error(error));
   }
 
 }
