@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthService as AuthenticationService } from '../__services__/auth.service';
 
+
 @Component({
   selector: 'app-social-authentication',
   templateUrl: './social-authentication.component.html',
@@ -40,14 +41,14 @@ export class SocialAuthenticationComponent implements OnInit {
   signInWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
       data => {
-        this.activateSocialSign(data, 'google');
+        return this.activateSocialSign(data, 'google');
       }
     ).catch(error => this.toast.error(error));
   }
   signInWithFB(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
       data => {
-        this.activateSocialSign(data, 'facebook');
+        return this.activateSocialSign(data, 'facebook');
       }
     ).catch(error => this.toast.error(error));
   }
