@@ -6,7 +6,7 @@ export interface IEventData {
   name: string;
   content?: any;
 }
-
+// this piece of code was borrowed from tembea and was not of my own doing
 @Injectable()
 export class AppEventService {
   observable: Observable<any>;

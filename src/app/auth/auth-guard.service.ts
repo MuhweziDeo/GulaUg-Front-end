@@ -10,15 +10,14 @@ export class AuthGuardService implements CanActivate {
   constructor(
     private router: Router,
     private authService: AuthService
-  ){}
+  ) {}
   canActivate(
      next: ActivatedRouteSnapshot,
      state: RouterStateSnapshot,
     ): Observable <boolean> |Promise <boolean> | boolean {
     const token = localStorage.getItem('token');
-    if(!token) return this.router.navigate(['login']);
+    if (!token) { return this.router.navigate(['login']); }
     return true;
-
    }
 
 }

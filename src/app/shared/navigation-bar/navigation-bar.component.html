@@ -24,9 +24,9 @@ navbar-dark bg-danger  lighten-1" >
       <li class="nav-item dropdown" dropdown *ngIf="authenticated">
         <a dropdownToggle mdbWavesEffect type="button"
            class="nav-link waves-light" mdbWavesEffect>
-          45<mdb-icon fas icon="bell"></mdb-icon>
+        <mdb-icon fas icon="bell"></mdb-icon>
+        <span class="badge badge-danger badge-counter">3+</span>
         </a>
-
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
           <ul>
             <li>Notification</li>
@@ -43,6 +43,7 @@ navbar-dark bg-danger  lighten-1" >
                class="img-fluid rounded-circle " width="20">
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a *ngIf="isAdmin" class="dropdown-item waves-light" mdbWavesEffect routerLink="/admin/dashboard">Admin</a>
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profile">My Profile</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cart</a>
           <a (click)="logOut()" class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
