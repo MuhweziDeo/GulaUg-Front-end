@@ -31,10 +31,13 @@ export class SocialAuthenticationComponent implements OnInit {
       access_token: data.authToken
     }).subscribe(res => {
       localStorage.setItem('token', res.token);
-      this.router.navigate(['/']);
       this.toast.success(`Login Successful ${data.firstName}`, '', {
         positionClass: 'toast-top-center'
       });
+      if (res.isAdmin) {
+        return this.router.navigate(['admin/dashboard']);
+       }
+      this.router.navigate(['/']);
       }
     );
   }
