@@ -14,12 +14,14 @@ import { LoginComponent } from './auth/login/login.component';
 const routes: Routes = [
   {path: '' , component: LandingPageComponent},
   {path: 'signup', component: SignupComponent},
-  {path:'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'auth/verify/:token', component: EmailConfirmationComponent},
-  {path: 'profile', component: ProfileComponent, 
-  canActivate:[AuthGuardService]},
+  {path: 'profile', component: ProfileComponent,
+  canActivate: [AuthGuardService]},
   { path: 'password-reset', component: PasswordResetRequestComponent },
   {path: 'auth/password-reset/:token/confirm', component: PasswordResetConfirmComponent },
+  {path: 'admin', loadChildren: () =>
+  import('./admin/admin.module').then(mod => mod.AdminModule)},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];

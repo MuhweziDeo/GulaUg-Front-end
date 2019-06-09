@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {NotFoundComponent} from './not-found/not-found.component';
@@ -28,6 +29,7 @@ import { AppEventService } from './shared/__services__/app-events.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,7 @@ import { AppEventService } from './shared/__services__/app-events.service';
     ProfileComponent,
     PasswordResetRequestComponent,
     PasswordResetConfirmComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { AppEventService } from './shared/__services__/app-events.service';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    SocialLoginModule
+    SocialLoginModule,
+    NgbModule
 
   ],
   providers: [
