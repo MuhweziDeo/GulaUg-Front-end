@@ -28,13 +28,16 @@ export class LoginComponent implements OnInit {
     const data = { email, password };
     this.authService.loginUser(data).subscribe(res => {
       this.loading = false;
-      const { accessToken, data: { username }, success} = res;
+      const { accessToken, data: { username, isAdmin }, success} = res;
       if (success) {
         form.reset();
         this.toast.success('login success');
         localStorage.setItem('token', accessToken);
         localStorage.setItem('username', username);
         this.authService.authorizeUser({ username });
+        if (isAdmin) {
+         return this.router.navigate(['admin/dashboard']);
+        }
         this.router.navigate(['']);
       }
     }, error => {
