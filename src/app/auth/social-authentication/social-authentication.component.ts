@@ -35,6 +35,10 @@ export class SocialAuthenticationComponent implements OnInit {
       this.toast.success(`Login Successful ${data.firstName}`, '', {
         positionClass: 'toast-top-center'
       });
+      if (res.isAdmin) {
+        return this.router.navigate(['admin']);
+       }
+      this.router.navigate(['/']);
       }
     );
   }

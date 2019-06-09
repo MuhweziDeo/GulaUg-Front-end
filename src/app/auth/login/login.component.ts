@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('username', username);
         this.authService.authorizeUser({ username });
         if (isAdmin) {
-         return this.router.navigate(['admin/dashboard']);
+         return this.router.navigate(['admin']);
         }
         this.router.navigate(['']);
       }

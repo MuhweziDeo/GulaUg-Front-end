@@ -20,8 +20,7 @@ const routes: Routes = [
   canActivate: [AuthGuardService]},
   { path: 'password-reset', component: PasswordResetRequestComponent },
   {path: 'auth/password-reset/:token/confirm', component: PasswordResetConfirmComponent },
-  {path: 'admin', loadChildren: () =>
-  import('./admin/admin.module').then(mod => mod.AdminModule)},
+  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
