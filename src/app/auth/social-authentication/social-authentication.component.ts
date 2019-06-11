@@ -4,6 +4,7 @@ import { AuthService } from 'angularx-social-login';
 import { ToastrService } from 'ngx-toastr';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthService as AuthenticationService } from '../__services__/auth.service';
+import { AppEventService } from '../../shared/__services__/app-events.service';
 
 
 @Component({
@@ -18,18 +19,22 @@ export class SocialAuthenticationComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private toast: ToastrService,
+    private appEventService: AppEventService
   ) { }
 
   ngOnInit() { }
 
   activateSocialSign(data: any, platform: string) {
-    this.authService.authorizeUser({
-      username: data.firstName,
-      image: data.photoUrl,
-    });
     this.authService.socialLogin(platform, {
       access_token: data.authToken
     }).subscribe(res => {
+      this.appEventService.broadcast({
+        name: 'LoginSuccess',
+        content: {
+          image: res.image,
+          isAdmin: res.isAdmin
+        }
+      });
       localStorage.setItem('token', res.token);
       this.router.navigate(['/']);
       this.toast.success(`Login Successful ${data.firstName}`, '', {

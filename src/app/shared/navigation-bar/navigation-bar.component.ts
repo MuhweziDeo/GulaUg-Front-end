@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../auth/__services__/auth.service';
 import { Subscription } from 'rxjs';
+import { AppEventService } from '../__services__/app-events.service';
 
 
 @Component({
@@ -13,28 +14,38 @@ export class NavigationBarComponent implements OnInit {
   public image: string;
   public username: string;
   loading = false;
+  isAdmin = false;
   authorizationSubscription: Subscription;
 
    constructor(
     private authService: AuthService,
-   ) {     this.authService.isLoggedIn(); }
+    private appEventService: AppEventService
+   ) { }
 
   ngOnInit() {
     this.loginUser();
+    this.appEventService.subscribe('LoginSuccess', (data) => {
+      this.authenticated = true;
+      this.isAdmin = data.content.isAdmin;
+      this.image = data.content.image;
+      this.username = data.content.username;
+    });
   }
 
   loginUser() {
+    if (!localStorage.getItem('token')) {return; }
     this.loading = true;
-    this.authService.authorization.subscribe(data => {
-      const { image, username }: any = data;
-      if (username || image ) {
-        this.authenticated = true;
+    return this.authService.verifyToken().subscribe(res => {
+      if (res.success) {
         this.loading = false;
-        this.image = image;
-        this.username = username;
+        this.authenticated = true;
+        this.isAdmin = res.data.User.isAdmin;
+        this.image = res.data.image;
+        this.username = res.data.User.username;
       }
+    }, error => {
       this.loading = false;
-    });
+      this.authenticated = false; });
   }
   logOut() {
     localStorage.removeItem('token');

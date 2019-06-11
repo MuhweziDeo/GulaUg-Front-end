@@ -3,6 +3,8 @@ import {environment} from '../../../environments/environment';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { SignUpModel } from '../signup/signup.component';
 import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AppEventService } from '../../shared/__services__/app-events.service';
 
 export class LoginModel {
   email: string;
@@ -19,7 +21,7 @@ export class AuthService {
       'Content-Type':  'application/json',
     })
   };
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private appEventService: AppEventService) {
     const { apiURl } = environment;
     this.baseURL = apiURl;
   }
@@ -57,9 +59,16 @@ export class AuthService {
       if (res.data) {
         const image = res.data.image;
         const username = res.data.User.username;
-        return this.authorizeUser({ image, username } );
+        const isAdmin = res.data.User.isAdmin;
+        return this.authorizeUser({ image, username, isAdmin } );
       }
       return this.authorizeUser({});
     });
   }
+
+  public verifyToken() {
+    return this.http.get<any>(`${this.baseURL}auth/user/`);
+  }
+
+
 }

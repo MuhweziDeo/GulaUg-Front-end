@@ -30,7 +30,6 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() { }
 
-  
    onSubmitSignUp(form: NgForm) {
     this.loading = true;
     this.passwordMatch = false;
