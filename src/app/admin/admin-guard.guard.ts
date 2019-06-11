@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, CanActivateChild, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/__services__/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelper } from '../helpers/jwtHelper';
 
@@ -11,7 +10,6 @@ import { JwtHelper } from '../helpers/jwtHelper';
 export class AdminGuard implements CanActivate, CanActivateChild {
   constructor(
     private router: Router,
-    private authService: AuthService,
     private toast: ToastrService
   ) {}
     canActivate(
@@ -23,7 +21,8 @@ export class AdminGuard implements CanActivate, CanActivateChild {
     const isAdmin = JwtHelper.checkIfAdmin();
     if (!isAdmin) {
       this.toast.info('Whoops Did You Get Lost !! UnAuthorized Access');
-      return this.router.navigate(['']);
+      this.router.navigate(['']);
+      return false;
     }
     return true;
 

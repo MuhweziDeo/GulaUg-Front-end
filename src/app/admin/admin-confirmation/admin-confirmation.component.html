@@ -1,0 +1,51 @@
+<div class="container p-5">
+
+  <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+      <!-- Nested Row within Card Body -->
+      <div class="row">
+        <div class="col-lg-5 d-none d-lg-block bg-register-image">
+          <img width="400"
+          src="https://images.pexels.com/photos/193349/pexels-photo-193349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+           alt="">
+        </div>
+        <div class="col-lg-7 mt-5">
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Continue Admin Registration</h1>
+            </div>
+            <form #confirmationForm="ngForm" (ngSubmit)="handleConfirmation(confirmationForm)">
+              <div class="form-group">
+                <input type="text" 
+                required 
+                class="form-control form-control-user" 
+                ngModel #username="ngModel" name="username" placeholder="Enter username">
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input required type="password" class="form-control form-control-user" 
+                   name="password" ngModel #password="ngModel" 
+                   placeholder="Password">
+                </div>
+                <div class="col-sm-6">
+                  <input required name="confirmPassword" ngModel #confirmPassword="ngModel" type="password" class="form-control form-control-user" 
+                   placeholder="Repeat Password">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="spinner-border text-danger" role="status" *ngIf="loading">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <button [disabled]="confirmationForm.invalid || loading" type="submit" class="btn btn-primary btn-user btn-block">
+                  Submit
+                </button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
