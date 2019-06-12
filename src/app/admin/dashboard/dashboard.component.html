@@ -109,48 +109,13 @@
                 <div class="row mb-5 p-4">
 
                   <div class="col-md-12 col-lg-12">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Mehn" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="love" placement="top">
-                      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="John" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Fp jones" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="gymn" placement="top">
-                      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Dee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Sdaad" placement="top">
-                      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="Pee" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="muhwezi" placement="top">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                      class="md-avatar rounded-circle p-2" mdbTooltip="aggrey" placement="top">
+                    <img 
+                    *ngFor="let user of newNonAdminUsers"  
+                    [src]="user.image || 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=' +
+                    'Blank&facialHairType=Blank&clotheType=CollarSweater&clotheColor=' +
+                    'Gray01&eyeType=Default&eyebrowType=Default&mouthType=Serious&skinColor=Light'" 
+                    alt="{{user.username}}"
+                    class="md-avatar rounded-circle p-2" mdbTooltip="{{user.username}}" placement="top">
 
                   </div>
                 </div>
