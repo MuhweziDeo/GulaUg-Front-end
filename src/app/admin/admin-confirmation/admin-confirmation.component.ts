@@ -17,7 +17,7 @@ export class AdminConfirmationComponent implements OnInit {
     private adminService: AdminConfirmationService,
     private activatedRoute: ActivatedRoute,
     private toast: ToastrService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {
