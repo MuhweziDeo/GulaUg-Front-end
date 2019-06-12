@@ -21,8 +21,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Users</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{allUsersCount}}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -39,7 +39,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Active Users </div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{activeUsersCount}}</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -55,10 +55,10 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Earnings</div>
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Admin Users</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{adminUsersCount}}</div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
@@ -168,24 +168,13 @@
                   <!-- Card Body -->
                   <div class="card-body">
                       <div class="row mb-5">
-
                           <div class="col-md-12 col-lg-12">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="Dee" placement="top">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="Mehn" placement="top">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="love" placement="top">
-                              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="John" placement="top">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="Fp jones" placement="top">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="gymn" placement="top">
-                              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="Dee" placement="top">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" alt="Avatar"
-                              class="md-avatar rounded size-3 p-2" mdbTooltip="Dee" placement="top">
+                            <img 
+                            *ngFor="let admin of adminUsers" 
+                            [src]="admin.image || 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=' +
+                            'Blank&facialHairType=Blank&clotheType=CollarSweater&clotheColor=' +
+                            'Gray01&eyeType=Default&eyebrowType=Default&mouthType=Serious&skinColor=Light'" alt="{{admin.username}}"
+                            class="md-avatar rounded size-3 p-2" mdbTooltip="{{admin.username}}" placement="top">
                           </div>
                         </div>
                   </div>

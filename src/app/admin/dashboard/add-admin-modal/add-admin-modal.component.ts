@@ -3,6 +3,7 @@ import { AddAdminService } from './add-admin.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ModalDirective } from 'angular-bootstrap-md';
+import { AppEventService } from '../../../shared/__services__/app-events.service';
 
 @Component({
   selector: 'app-add-admin-modal',
@@ -14,7 +15,8 @@ export class AddAdminModalComponent implements OnInit {
   loading: boolean;
   constructor(
     private adminService: AddAdminService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private appEventService: AppEventService
    ) { }
 
   ngOnInit() {}
@@ -25,6 +27,9 @@ export class AddAdminModalComponent implements OnInit {
     this.adminService.createAdmin(email).subscribe(res => {
         const { success, message } = res;
         if (success) {
+          this.appEventService.broadcast({
+            name: 'adminAdded',
+          });
           this.loading = false;
           this.toast.success(message);
           form.reset();
