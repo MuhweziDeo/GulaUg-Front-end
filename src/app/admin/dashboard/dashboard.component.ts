@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import { Profile } from '../../shared/models/users.model';
 import { AppEventService } from '../../shared/__services__/app-events.service';
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit {
   adminUsersCount: number;
   allUsersCount: number;
   activeUsersCount: number;
+  newNonAdminUsers: Profile[] = [];
   constructor(
     private dashboardService: DashboardService,
     private appEventService: AppEventService,
@@ -30,6 +32,7 @@ export class DashboardComponent implements OnInit {
       const { success, data } = res;
       if (success) {
         this.allUsersCount = data.length;
+        this.newNonAdminUsers = data.filter(user => user.User.isAdmin === false);
         this.activeUsersCount = data.filter(user => user.User.active === true).length;
         this.adminUsersCount = data.filter(user => user.User.isAdmin === true ).length;
         this.adminUsers = data.filter(user => user.User.isAdmin === true ).splice(0, 10);
