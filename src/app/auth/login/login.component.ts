@@ -3,6 +3,7 @@ import { AuthService } from '../__services__/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AppEventService } from '../../shared/__services__/app-events.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private toast: ToastrService,
-    private router: Router
+    private router: Router,
+    private appEventService: AppEventService
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,12 @@ export class LoginComponent implements OnInit {
       const { accessToken, data: { username, isAdmin }, success} = res;
       if (success) {
         form.reset();
+        this.appEventService.broadcast({
+          name: 'LoginSuccess',
+          content: {
+          username,
+          isAdmin
+          } });
         this.toast.success('login success');
         localStorage.setItem('token', accessToken);
         localStorage.setItem('username', username);
@@ -38,7 +46,7 @@ export class LoginComponent implements OnInit {
         if (isAdmin) {
          return this.router.navigate(['admin']);
         }
-        this.router.navigate(['']);
+        return this.router.navigate(['']);
       }
     }, error => {
       this.loading = false;
