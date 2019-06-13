@@ -8,11 +8,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddAdminModalComponent } from './dashboard/add-admin-modal/add-admin-modal.component';
 import { FormsModule } from '@angular/forms';
-import { ManageUsersComponent } from './manage-users/manage-users.component';
 @NgModule({
-  declarations: [AdminComponent, DashboardComponent,
-     AddAdminModalComponent, ManageUsersComponent
-    ],
+  declarations: [AdminComponent, DashboardComponent, AddAdminModalComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

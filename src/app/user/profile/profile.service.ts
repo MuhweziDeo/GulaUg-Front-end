@@ -21,18 +21,4 @@ export class ProfileService {
   updateProfile(username: string, data: object): Observable<any> {
     return this.http.put(`${this.profileUrl}profile/${username}`, data);
   }
-
-  fetchProfile(username: string): Observable<any> {
-    return this.http.get(`${environment.apiURl}auth/profile/${username}`);
-  }
-
-  activateOrDeactivateAccount(activationObject: IAccountActivationObject): Observable<any> {
-    return this.http.put(`${environment.apiURl}admin/user/activation`, activationObject);
-  }
-}
-
-export interface IAccountActivationObject {
-  userId: number;
-  activateStatus: boolean;
-
 }
