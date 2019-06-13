@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
-import { Profile } from '../../shared/models/users.model';
+import { IProfile } from '../../shared/models/users.model';
 import { AppEventService } from '../../shared/__services__/app-events.service';
-import { filter } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +10,11 @@ import { filter } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
   toggle: true;
-  adminUsers: Profile[] = [];
+  adminUsers: IProfile[] = [];
   adminUsersCount: number;
   allUsersCount: number;
   activeUsersCount: number;
-  newNonAdminUsers: Profile[] = [];
+  newNonAdminUsers: IProfile[] = [];
   constructor(
     private dashboardService: DashboardService,
     private appEventService: AppEventService,

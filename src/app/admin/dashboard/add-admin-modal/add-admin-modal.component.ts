@@ -38,7 +38,7 @@ export class AddAdminModalComponent implements OnInit {
         }
     }, error => {
       this.loading = false;
-      this.toast.info(error.error.message);
+      this.toast.info(error.error.message || 'Something went wrong');
       return;
     });
   }
