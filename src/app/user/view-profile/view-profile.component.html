@@ -1,0 +1,219 @@
+<div *ngIf="user;else noProfile" class="container emp-profile shadow-lg">
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img
+            [src]="user.image || 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=' +
+            'Blank&facialHairType=Blank&clotheType=CollarSweater&clotheColor=' +
+             'Gray01&eyeType=Default&eyebrowType=Default&mouthType=Serious&skinColor=Light'"
+            alt="" />
+          <div *ngIf="user.username === currentUser.username" class="file btn btn-lg btn-primary">
+            Change Photo
+            <input type="file" name="file" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="profile-head">
+          <h5>
+            {{user.firstName || user.username}} {{ user.lastName }}
+
+          </h5>
+          <h6>
+            Web Developer and Designer
+          </h6>
+          <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">Recent Activity</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <a *ngIf="user.username === currentUser.username" 
+          class="profile-edit-btn" routerLink="/profile">Edit
+            Profile</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <p>SOCAIL LINKS</p>
+          <a href="">Facebook</a><br />
+          <a href="">Twitter</a><br />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>User ID</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{user.User.id}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Account Activation Status</label>
+              </div>
+              <div class="col-md-6 row">
+                <div class="col-md-6">
+                    <mdb-checkbox  
+                    (change)="activateDeActivateAccount($event)"
+                    [disabled]="!currentUser.isAdmin || loading"
+                    [checked]="user.User.active"
+                     [default]="true">
+                    </mdb-checkbox>
+                </div>
+                  <div *ngIf="loading" class="col-md-6">
+                      <div class="spinner-grow text-danger" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Names</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{user.firstName || 'First Name not set'}}
+                  {{user.lastName || 'Last Name not set Yet'}} </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Email</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{user.User.email}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Phone</label>
+              </div>
+              <div class="col-md-6">
+                <p>123 456 7890</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Joined</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{ user.createdAt | date }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Profession</label>
+              </div>
+              <div class="col-md-6">
+                <p>Web Developer and Designer</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Country</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{user.country || 'Not Set'}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>City</label>
+              </div>
+              <div class="col-md-6">
+                <p>{{user.city || 'Not set'}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Experience</label>
+              </div>
+              <div class="col-md-6">
+                <p>Expert</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Hourly Rate</label>
+              </div>
+              <div class="col-md-6">
+                <p>10$/hr</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Total Projects</label>
+              </div>
+              <div class="col-md-6">
+                <p>230</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>English Level</label>
+              </div>
+              <div class="col-md-6">
+                <p>Expert</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Availability</label>
+              </div>
+              <div class="col-md-6">
+                <p>6 months</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <label>Your Bio</label><br />
+                <p>Your detail description</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-template #noProfile>
+  <!-- Jumbotron -->
+  <div class="mt-5 container">
+    <div class="text-dark text-center py-5 px-4">
+        <div *ngIf="loading" class="spinner-border text-danger" 
+            style="width: 10rem; height: 10rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+      <div *ngIf="!loading" class="py-5">
+        <!-- Content -->
+        <h5 class="h5 text-danger"><i class="fas fa-7x fa-frown"></i></h5>
+        <h2 class="card-title h2 my-4 py-2">404</h2>
+        <h1 class="mb-4 pb-2 px-md-5 mx-md-5">Matching Profile Not Found</h1>
+        <a routerLink="/" mdbBtn gradient="white" mdbWavesEffect>
+          <mdb-icon fas icon="clone" class="left"></mdb-icon>Go Home
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+
+</ng-template>
