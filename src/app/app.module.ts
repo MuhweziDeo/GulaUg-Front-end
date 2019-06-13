@@ -26,6 +26,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AppEventService } from './shared/__services__/app-events.service';
 import { AddAdminModalComponent } from './admin/dashboard/add-admin-modal/add-admin-modal.component';
 import { AdminConfirmationComponent } from './admin/admin-confirmation/admin-confirmation.component';
+import { ViewProfileComponent } from './user/view-profile/view-profile.component';
 
 
 
@@ -46,7 +47,8 @@ import { AdminConfirmationComponent } from './admin/admin-confirmation/admin-con
     PasswordResetRequestComponent,
     PasswordResetConfirmComponent,
     LoginComponent,
-    AdminConfirmationComponent
+    AdminConfirmationComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,
