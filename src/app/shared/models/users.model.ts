@@ -1,4 +1,4 @@
-export interface IUser {
+export interface User {
     username: string;
     email: string;
     id: number;
@@ -10,8 +10,8 @@ export interface IUser {
     verified_on?: string;
 }
 
-export interface IProfile {
-    User: IUser;
+export interface Profile {
+    User;
     image: string;
     firstName: string;
     lastName: string;

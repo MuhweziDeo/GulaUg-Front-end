@@ -11,7 +11,6 @@ import { PasswordResetRequestComponent } from './auth/password-reset/password-re
 import { PasswordResetConfirmComponent } from './auth/password-reset/password-reset-confirm/password-reset-confirm.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AdminConfirmationComponent } from './admin/admin-confirmation/admin-confirmation.component';
-import { ViewProfileComponent } from './user/view-profile/view-profile.component';
 
 const routes: Routes = [
   {path: '' , component: LandingPageComponent},
@@ -22,7 +21,6 @@ const routes: Routes = [
   canActivate: [AuthGuardService]},
   { path: 'password-reset', component: PasswordResetRequestComponent },
   {path: 'auth/password-reset/:token/confirm', component: PasswordResetConfirmComponent },
-  { path: 'user/:username', component: ViewProfileComponent },
   {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
   {path: 'admin/verify/:token/confirm', component: AdminConfirmationComponent},
   {path: '404', component: NotFoundComponent},
