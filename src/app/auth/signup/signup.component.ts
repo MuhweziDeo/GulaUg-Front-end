@@ -33,19 +33,12 @@ export class SignupComponent implements OnInit {
    onSubmitSignUp(form: NgForm) {
     this.loading = true;
     this.passwordMatch = false;
-    const {  password, confirm, username, email} = form.value;
+    const {  password, username, email} = form.value;
     const data = {
       username,
       password,
       email
     };
-    if (password !== confirm) {
-      this.loading = false;
-      setTimeout(() => {
-        this.passwordMatch = false;
-      }, 3000);
-      return this.passwordMatch = true;
-    }
     this.authService.signUpUser(data).subscribe(res => {
       this.toast.success(res.message);
       form.reset();

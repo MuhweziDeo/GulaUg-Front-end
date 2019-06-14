@@ -1,4 +1,4 @@
- <div class="social-container">
+ <div *ngIf="!loading" class="social-container">
    <a  class="btn btn-google btn-user btn-block"(click)="signInWithGoogle()">
      <i class="fab fa-google fa-fw"></i> Login with Google
    </a>
@@ -6,3 +6,9 @@
      <i class="fab fa-facebook-f fa-fw" ></i> Login with Facebook
    </a>
  </div>
+
+ <app-loading 
+ [width]="'2rem'"
+ [height]="'2rem'"
+ [loading]="loading"
+ ></app-loading>

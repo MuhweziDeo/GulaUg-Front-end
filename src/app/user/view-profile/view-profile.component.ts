@@ -58,7 +58,7 @@ export class ViewProfileComponent implements OnInit {
       }
     }, error => {
       this.loading = false;
-      return this.toast.error(error.error.message);
+      return this.toast.error(error.error.message || 'unable to fetch data');
     });
   }
 

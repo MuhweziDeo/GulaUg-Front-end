@@ -9,12 +9,12 @@ import { AppEventService } from '../../shared/__services__/app-events.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  toggle: true;
   adminUsers: IProfile[] = [];
   adminUsersCount: number;
   allUsersCount: number;
   activeUsersCount: number;
   newNonAdminUsers: IProfile[] = [];
+  loading: boolean;
   constructor(
     private dashboardService: DashboardService,
     private appEventService: AppEventService,
@@ -26,7 +26,9 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchUsers() {
+    this.loading = true;
     this.dashboardService.fetchUsers().subscribe(res => {
+      this.loading = false;
       const { success, data } = res;
       if (success) {
         this.allUsersCount = data.length;
@@ -35,6 +37,8 @@ export class DashboardComponent implements OnInit {
         this.adminUsersCount = data.filter(user => user.User.isAdmin === true ).length;
         this.adminUsers = data.filter(user => user.User.isAdmin === true ).splice(0, 10);
       }
+    }, error => {
+      this.loading = false;
     });
   }
 

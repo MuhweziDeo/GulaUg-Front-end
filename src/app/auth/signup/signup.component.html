@@ -20,34 +20,34 @@
               </div>
 
               <div class="form-group">
-                <input type="email" email name="email" ngModel required type="email" #email="ngModel" 
-                class="form-control form-control-user" 
-                  placeholder="Email Address">
-                  <span class="text-danger" *ngIf="email.touched && email.invalid">Please enter valid email</span>
+                <input type="email" email name="email" ngModel required type="email" #email="ngModel"
+                  class="form-control form-control-user" placeholder="Email Address">
+                <span class="text-danger" *ngIf="email.touched && email.invalid">Please enter valid email</span>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input ngModel name="password" type="password" placeholder="Password" #password="ngModel" required
-                   type="password" class="form-control form-control-user">
-                   <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid password</span>
+                    type="password" class="form-control form-control-user">
+                  <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid
+                    password</span>
                 </div>
 
                 <div class="col-sm-6">
-                  <input ngModel name="confirm" type="password" #confirm="ngModel" required
-                  type="password" class="form-control form-control-user"
-                    placeholder="Repeat Password">
-                    <span class="text-danger" *ngIf="confirm.touched && confirm.invalid">
-                      Please enter confirm password and must match with password
-                    </span>
+                  <input ngModel appConfirmEqualDirective="password" name="confirm"
+                   #confirm="ngModel" required type="password"
+                    class="form-control form-control-user" placeholder="Repeat Password">
+                  <span class="text-danger" *ngIf="confirm.touched && confirm.errors?.required">
+                    confirm password field is required 
+                  </span>
+                  <span class="text-danger" *ngIf="confirm.touched && confirm.errors?.notEqual && !confirm.errors?.required">
+                      password and confirm password must match
+                  </span>
                 </div>
-                <span *ngIf="passwordMatch" class="text-danger">
-                  <p>Passwords Must Match</p>
-                </span>
+        
               </div>
-              <div class="spinner-border text-danger" role="status" *ngIf="loading">
-                <span class="sr-only">Loading...</span>
-              </div>
-              <button [disabled]="signupForm.invalid || loading"  class="btn btn-primary btn-user btn-block">
+
+              <app-loading [width]="'2rem'" [height]="'2rem'" [loading]="loading"></app-loading>
+              <button [disabled]="signupForm.invalid || loading" class="btn btn-primary btn-user btn-block">
                 Register Account
               </button>
               <hr>

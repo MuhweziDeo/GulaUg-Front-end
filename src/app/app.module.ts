@@ -27,6 +27,8 @@ import { AppEventService } from './shared/__services__/app-events.service';
 import { AddAdminModalComponent } from './admin/dashboard/add-admin-modal/add-admin-modal.component';
 import { AdminConfirmationComponent } from './admin/admin-confirmation/admin-confirmation.component';
 import { ViewProfileComponent } from './user/view-profile/view-profile.component';
+import { LoadingComponent } from './shared/loading/loading.component';
+import { ConfirmEqualValidatorDirective } from './shared/validators/confirm.equal.validator.directive';
 
 
 
@@ -48,7 +50,9 @@ import { ViewProfileComponent } from './user/view-profile/view-profile.component
     PasswordResetConfirmComponent,
     LoginComponent,
     AdminConfirmationComponent,
-    ViewProfileComponent
+    ViewProfileComponent,
+    LoadingComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,

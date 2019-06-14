@@ -36,9 +36,7 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                   <div class="spinner-border text-danger" role="status" *ngIf="loading">
-                    <span class="sr-only">Loading...</span>
-                  </div>
+                  <app-loading [width]="'2rem'" [height]="'2rem'" [loading]="loading"></app-loading>
                   <button [disabled]="loginForm.invalid || loading" class="btn btn-primary btn-user btn-block">
                     Login
                   </button>

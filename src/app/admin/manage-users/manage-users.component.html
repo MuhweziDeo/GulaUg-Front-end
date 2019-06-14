@@ -1,4 +1,5 @@
-<div class="container manage-users__container">
+
+<div *ngIf="!loading" class="container manage-users__container">
   <h1 class="center">Manage Users</h1>
 
   <div class="row container">
@@ -26,4 +27,11 @@
   </div>
   <!-- Card deck -->
   <!-- Grid row -->
+</div>
+<div class="container d-flex justify-content-center p-5">
+  <div *ngIf="loading" class="spinner-border text-danger" 
+  [style.width]="width ? width : '10rem'"
+    [style.height]="height ? height : '10rem' " role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
