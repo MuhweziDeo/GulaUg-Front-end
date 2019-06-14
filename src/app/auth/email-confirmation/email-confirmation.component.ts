@@ -12,6 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 export class EmailConfirmationComponent implements OnInit, OnDestroy {
   token: string;
   paramsSubscription: Subscription;
+  loading: boolean;
   constructor(private authService: AuthService,
               private route: ActivatedRoute,
               private router: Router,
@@ -28,21 +29,24 @@ export class EmailConfirmationComponent implements OnInit, OnDestroy {
   }
 
   activateUser(token: string): any {
+    this.loading = true;
     try {
       this.authService.verifyUser(token).subscribe(response => {
-        console.log(response);
+        this.loading = false;
         this.toastrService.success(response.message);
         localStorage.setItem('token', response.accessToken);
         localStorage.setItem('username', response.data.username);
-        localStorage.setItem('image', response.image)
+        localStorage.setItem('image', response.image);
         this.router.navigate(['']);
         this.authService.authorizeUser({username: response.data.username, image: response.image});
       }, error => {
+        this.loading = false;
         this.toastrService.error(`${error.error.message}, Please Try Again Later`);
         this.router.navigate(['']);
 
       } );
     } catch (e) {
+      this.loading = false;
       this.toastrService.error('Unable to Activate Account');
       this.router.navigate(['']);
     }

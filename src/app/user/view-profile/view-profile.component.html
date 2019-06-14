@@ -52,7 +52,8 @@
       </div>
       <div class="col-md-8">
         <div class="tab-content profile-tab" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="tab-pane fade show active"
+             id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
               <div class="col-md-6">
                 <label>User ID</label>
@@ -66,7 +67,7 @@
                 <label>Account Activation Status</label>
               </div>
               <div class="col-md-6 row">
-                <div class="col-md-6">
+                <div class="col-md-2">
                     <mdb-checkbox  
                     (change)="activateDeActivateAccount($event)"
                     [disabled]="!currentUser.isAdmin || loading"
@@ -74,9 +75,19 @@
                      [default]="true">
                     </mdb-checkbox>
                 </div>
-                  <div *ngIf="loading" class="col-md-6">
+                <div *ngIf="currentUser.isAdmin" class="col-md-8">
+                  <span 
+                  mdbTooltip="Check to activate or Deactivate account" 
+                  placement="top"
+                  [class.text-danger]="user.User.active"
+                  [class.text-success]="!user.User.active"
+                  class="text-sm font-weight-bold">{{ user.User.active ? 
+                  'Deactivate' : 'Activate' }} Account
+                </span>
+              </div>
+                  <div *ngIf="loading" class="col-md-2">
                       <div class="spinner-grow text-danger" role="status">
-                          <span class="sr-only">Loading...</span>
+                          <span class="sr-only text-sm">Loading...</span>
                         </div>
                   </div>
                   

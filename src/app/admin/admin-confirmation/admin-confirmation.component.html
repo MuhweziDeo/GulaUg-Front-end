@@ -22,16 +22,26 @@
                 ngModel #username="ngModel" name="username" placeholder="Enter username">
               </div>
               <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input required type="password" class="form-control form-control-user" 
-                   name="password" ngModel #password="ngModel" 
-                   placeholder="Password">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input ngModel name="password" type="password" placeholder="Password" #password="ngModel" required
+                      type="password" class="form-control form-control-user">
+                    <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid
+                      password</span>
+                  </div>
+  
+                  <div class="col-sm-6">
+                    <input ngModel appConfirmEqualDirective="password" name="confirm"
+                     #confirm="ngModel" required type="password"
+                      class="form-control form-control-user" placeholder="Repeat Password">
+                    <span class="text-danger" *ngIf="confirm.touched && confirm.errors?.required">
+                      confirm password field is required 
+                    </span>
+                    <span class="text-danger" *ngIf="confirm.touched && confirm.errors?.notEqual && !confirm.errors?.required">
+                        password and confirm password must match
+                    </span>
+                  </div>
+          
                 </div>
-                <div class="col-sm-6">
-                  <input required name="confirmPassword" ngModel #confirmPassword="ngModel" type="password" class="form-control form-control-user" 
-                   placeholder="Repeat Password">
-                </div>
-              </div>
               <div class="form-group">
                 <div class="spinner-border text-danger" role="status" *ngIf="loading">
                   <span class="sr-only">Loading...</span>
