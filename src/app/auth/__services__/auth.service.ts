@@ -31,20 +31,20 @@ export class AuthService {
   }
 
   public signUpUser(User: SignUpModel): Observable<any> {
-    this.signUpUrl = `${this.baseURL}/signup`;
+    this.signUpUrl = `${this.baseURL}auth/signup`;
     return this.http.post(this.signUpUrl, User, this.headers);
   }
 
   public verifyUser(token: string): Observable<any> {
-    return this.http.put(`${this.baseURL}/verify/${token}/`, this.headers);
+    return this.http.put(`${this.baseURL}auth/verify/${token}/`, this.headers);
   }
 
   public loginUser(User: LoginModel): Observable<any> {
-    return this.http.post(`${this.baseURL}/login`, User, this.headers);
+    return this.http.post(`${this.baseURL}auth/login`, User, this.headers);
   }
 
   public socialLogin(platformName: string, tokens: any): Observable<any> {
-    return this.http.post(`${this.baseURL}/${platformName}`, tokens, this.headers);
+    return this.http.post(`${this.baseURL}auth/${platformName}`, tokens, this.headers);
   }
 
   public isLoggedIn() {
@@ -55,7 +55,7 @@ export class AuthService {
         Authorization:  token,
       })
     };
-    return this.http.get<any>(`${this.baseURL}/user/`, newHeaders).subscribe(res => {
+    return this.http.get<any>(`${this.baseURL}auth/user/`, newHeaders).subscribe(res => {
       if (res.data) {
         const image = res.data.image;
         const username = res.data.User.username;
@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   public verifyToken() {
-    return this.http.get<any>(`${this.baseURL}/user/`);
+    return this.http.get<any>(`${this.baseURL}auth/user/`);
   }
 
 

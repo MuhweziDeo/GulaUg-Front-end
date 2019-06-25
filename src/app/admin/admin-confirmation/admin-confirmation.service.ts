@@ -16,7 +16,7 @@ export class AdminConfirmationService {
    }
 
    confirmAdminUser(adminObject: IadminConfirm, token: string): Observable<any> {
-     return this.http.put(`${this.baseUrl}/admin/verify/${token}/confirm`, adminObject);
+     return this.http.put(`${this.baseUrl}admin/verify/${token}/confirm`, adminObject);
    }
 }
 
