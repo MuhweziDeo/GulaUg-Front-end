@@ -12,7 +12,7 @@ export class ProfileService {
     private http: HttpClient
   ) {
     const {apiURl} = environment;
-    this.profileUrl = `${apiURl}auth/`;
+    this.profileUrl = `${apiURl}api/v1/`;
   }
 
   getUserProfile(): Observable<any> {
@@ -23,11 +23,11 @@ export class ProfileService {
   }
 
   fetchProfile(username: string): Observable<any> {
-    return this.http.get(`${environment.apiURl}auth/profile/${username}`);
+    return this.http.get(`${environment.apiURl}api/v1/profile/${username}`);
   }
 
   activateOrDeactivateAccount(activationObject: IAccountActivationObject): Observable<any> {
-    return this.http.put(`${environment.apiURl}admin/user/activation`, activationObject);
+    return this.http.put(`${environment.apiURl}api/v1/admin/user/activation`, activationObject);
   }
 }
 
