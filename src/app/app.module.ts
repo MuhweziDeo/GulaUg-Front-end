@@ -29,6 +29,7 @@ import { AdminConfirmationComponent } from './admin/admin-confirmation/admin-con
 import { ViewProfileComponent } from './user/view-profile/view-profile.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { ConfirmEqualValidatorDirective } from './shared/validators/confirm.equal.validator.directive';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 
@@ -52,7 +53,8 @@ import { ConfirmEqualValidatorDirective } from './shared/validators/confirm.equa
     AdminConfirmationComponent,
     ViewProfileComponent,
     LoadingComponent,
-    ConfirmEqualValidatorDirective
+    ConfirmEqualValidatorDirective,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
