@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {NotFoundComponent} from './not-found/not-found.component';
@@ -24,15 +25,12 @@ import { PasswordResetRequestComponent } from './auth/password-reset/password-re
 import { PasswordResetConfirmComponent } from './auth/password-reset/password-reset-confirm/password-reset-confirm.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AppEventService } from './shared/__services__/app-events.service';
-import { AddAdminModalComponent } from './admin/dashboard/add-admin-modal/add-admin-modal.component';
 import { AdminConfirmationComponent } from './admin/admin-confirmation/admin-confirmation.component';
 import { ViewProfileComponent } from './user/view-profile/view-profile.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { ConfirmEqualValidatorDirective } from './shared/validators/confirm.equal.validator.directive';
 import { FooterComponent } from './shared/footer/footer.component';
-
-
-
+import { store, IAppState } from './redux/store';
 
 
 
@@ -65,7 +63,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     SocialLoginModule,
-    NgbModule
+    NgbModule,
+    NgReduxModule
 
   ],
   providers: [
@@ -83,4 +82,9 @@ import { FooterComponent } from './shared/footer/footer.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
+    ngRedux.provideStore(store);
+  }
+ }

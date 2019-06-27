@@ -22,34 +22,34 @@ export class PasswordResetConfirmComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.token = params.token
-    })
+      this.token = params.token;
+    });
   }
   resetPassword(password, confirm) {
     this.loading = true;
-      if(password.value !== confirm.value){
+    if (password.value !== confirm.value) {
         this.loading = false;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.passwordError = false;
-        },2000)
+        }, 2000);
         this.passwordError = true;
         return;
       }
-      this.passwordResetService.passwordResetConfirmation({
+    this.passwordResetService.passwordResetConfirmation({
         password: password.value,
         confirmPassword: confirm.value
-      },this.token).subscribe(res => {
+      }, this.token).subscribe(res => {
         this.loading = false;
-        if(res.success){
+        if (res.success) {
           localStorage.setItem('token', res.accessToken);
           this.toastr.success(res.message);
-          this.router.navigate(['/'])
+          this.router.navigate(['/']);
         }
-      },error => {
+      }, error => {
         this.loading = false;
         this.toastr.error(error.error.message);
-      })
-    
+      });
+
 
   }
 

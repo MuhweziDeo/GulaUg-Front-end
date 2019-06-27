@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthService as AuthenticationService } from '../__services__/auth.service';
 import { AppEventService } from '../../shared/__services__/app-events.service';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../../redux/store';
 
 
 @Component({
@@ -19,7 +21,8 @@ export class SocialAuthenticationComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private toast: ToastrService,
-    private appEventService: AppEventService
+    private appEventService: AppEventService,
+    private store: NgRedux<IAppState>
   ) { }
 
   ngOnInit() { }
@@ -29,13 +32,10 @@ export class SocialAuthenticationComponent implements OnInit {
       access_token: data.authToken
     }).subscribe(res => {
       this.loading = false;
-      this.appEventService.broadcast({
-        name: 'LoginSuccess',
-        content: {
-          image: res.image,
-          isAdmin: res.isAdmin,
-          username: res.username
-        }
+      const { image, isAdmin, username} = res;
+      this.store.dispatch({
+        type: 'Auth-Success',
+        payload: { username, isAdmin, image}
       });
       localStorage.setItem('token', res.token);
       this.router.navigate(['/']);
