@@ -3,6 +3,8 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, CanActivateCh
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelper } from '../helpers/jwtHelper';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../redux/store';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,19 @@ import { JwtHelper } from '../helpers/jwtHelper';
 export class AdminGuard implements CanActivate, CanActivateChild {
   constructor(
     private router: Router,
-    private toast: ToastrService
-  ) {}
+    private toast: ToastrService,
+    private store: NgRedux<IAppState>
+  ) { }
     canActivate(
      next: ActivatedRouteSnapshot,
      state: RouterStateSnapshot,
     ): Observable <boolean> |Promise <boolean> | boolean {
+    if (this.store.getState().user.username) {
+      if (this.store.getState().user.isAdmin) {
+        return true;
+      }
+      return false;
+    }
     const token = localStorage.getItem('token');
     if (!token) { return this.router.navigate(['login']); }
     const isAdmin = JwtHelper.checkIfAdmin();

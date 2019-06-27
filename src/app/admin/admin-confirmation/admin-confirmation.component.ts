@@ -4,6 +4,8 @@ import { AdminConfirmationService } from './admin-confirmation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppEventService } from '../../shared/__services__/app-events.service';
+import { IAppState } from '../../redux/store';
+import { NgRedux } from '@angular-redux/store';
 
 @Component({
   selector: 'app-admin-confirmation',
@@ -18,6 +20,7 @@ export class AdminConfirmationComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toast: ToastrService,
     private router: Router,
+    private store: NgRedux<IAppState>
   ) { }
 
   ngOnInit() {
@@ -31,6 +34,11 @@ export class AdminConfirmationComponent implements OnInit {
       this.loading = true;
       this.adminService.confirmAdminUser(data, this.token).subscribe(res => {
           if (res.success) {
+            const {username, image, isAdmin} = res;
+            this.store.dispatch({
+              type: 'Auth-Success',
+              payload: { username, image, isAdmin }
+            });
             localStorage.setItem('token', res.access_token);
             form.reset();
             this.loading = false;

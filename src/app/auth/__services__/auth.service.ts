@@ -3,10 +3,11 @@ import {environment} from '../../../environments/environment';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { SignUpModel } from '../signup/signup.component';
 import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { AppEventService } from '../../shared/__services__/app-events.service';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from 'src/app/redux/store';
 
-export class LoginModel {
+export interface LoginModel {
   email: string;
   password: string;
 }
@@ -21,7 +22,10 @@ export class AuthService {
       'Content-Type':  'application/json',
     })
   };
-  constructor(private http: HttpClient, private appEventService: AppEventService) {
+  constructor(private http: HttpClient,
+              private appEventService: AppEventService,
+              private store: NgRedux<IAppState>
+    ) {
     const { apiURl } = environment;
     this.baseURL = apiURl;
   }
@@ -57,10 +61,14 @@ export class AuthService {
     };
     return this.http.get<any>(`${this.baseURL}/user/`, newHeaders).subscribe(res => {
       if (res.data) {
-        const image = res.data.image;
-        const username = res.data.User.username;
-        const isAdmin = res.data.User.isAdmin;
-        return this.authorizeUser({ image, username, isAdmin } );
+        this.store.dispatch({
+          type: 'Auth-Success',
+          payload : {
+            username: res.data.User.username,
+            image: res.data.image,
+            isAdmin: res.data.User.isAdmin
+          }
+        });
       }
       return this.authorizeUser({});
     });
