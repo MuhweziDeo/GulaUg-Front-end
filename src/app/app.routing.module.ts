@@ -12,6 +12,7 @@ import { PasswordResetConfirmComponent } from './auth/password-reset/password-re
 import { LoginComponent } from './auth/login/login.component';
 import { AdminConfirmationComponent } from './admin/admin-confirmation/admin-confirmation.component';
 import { ViewProfileComponent } from './user/view-profile/view-profile.component';
+import { PasswordChangeComponent } from './user/password-change/password-change.component';
 
 const routes: Routes = [
   {path: '' , component: LandingPageComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'auth/verify/:token', component: EmailConfirmationComponent},
   {path: 'profile', component: ProfileComponent,
   canActivate: [AuthGuardService]},
+  {path: 'profile/password-change', component: PasswordChangeComponent, canActivate: [AuthGuardService]},
   { path: 'password-reset', component: PasswordResetRequestComponent },
   {path: 'auth/password-reset/:token/confirm', component: PasswordResetConfirmComponent },
   { path: 'user/:username', component: ViewProfileComponent },

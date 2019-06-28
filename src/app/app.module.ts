@@ -31,6 +31,7 @@ import { LoadingComponent } from './shared/loading/loading.component';
 import { ConfirmEqualValidatorDirective } from './shared/validators/confirm.equal.validator.directive';
 import { FooterComponent } from './shared/footer/footer.component';
 import { store, IAppState } from './redux/store';
+import { PasswordChangeComponent } from './user/password-change/password-change.component';
 
 
 
@@ -52,7 +53,8 @@ import { store, IAppState } from './redux/store';
     ViewProfileComponent,
     LoadingComponent,
     ConfirmEqualValidatorDirective,
-    FooterComponent
+    FooterComponent,
+    PasswordChangeComponent
   ],
   imports: [
     BrowserModule,

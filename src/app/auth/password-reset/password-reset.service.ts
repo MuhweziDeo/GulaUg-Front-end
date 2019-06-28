@@ -10,12 +10,10 @@ export class PasswordResetService {
   passwordResetURL: string;
   constructor(
     private http: HttpClient
-      ) 
-    {
+      ) {
     const {apiURl} = environment;
-    this.passwordResetURL = `${apiURl}auth/password-reset`;
+    this.passwordResetURL = `${apiURl}/password-reset`;
    }
-  
   sendPasswordResetLink(data: object): Observable<any> {
     return this.http.post(this.passwordResetURL, data);
   }

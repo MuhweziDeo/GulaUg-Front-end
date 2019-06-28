@@ -23,12 +23,12 @@ export class PasswordResetRequestComponent implements OnInit {
     this.loading = true;
     this.passwordResetService.sendPasswordResetLink({email}).subscribe(res => {
       this.loading = false;
-      if(res.success) {
+      if (res.success) {
         this.toastr.success(res.message);
         form.reset();
       }
-    },error => {
-    this.loading = false
+    }, error => {
+    this.loading = false;
     this.toastr.error(error.error.message || 'Something went wrong Please Try Again')});
   }
 
