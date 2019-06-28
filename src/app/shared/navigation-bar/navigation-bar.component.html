@@ -45,6 +45,7 @@ navbar-dark red" >
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
             <a *ngIf="isAdmin" class="dropdown-item waves-light" mdbWavesEffect routerLink="/admin/dashboard">Admin</a>
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/user/{{username}}">My Profile</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profile/password-change">Change Password</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cart</a>
           <a (click)="logOut()" class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
         </div>
