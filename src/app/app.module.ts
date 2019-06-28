@@ -32,6 +32,11 @@ import { ConfirmEqualValidatorDirective } from './shared/validators/confirm.equa
 import { FooterComponent } from './shared/footer/footer.component';
 import { store, IAppState } from './redux/store';
 import { PasswordChangeComponent } from './user/password-change/password-change.component';
+import { OffersComponent } from './products/offers/offers.component';
+import { ProductCardComponent } from './products/product-card/product-card.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { BannerComponent } from './shared/banner/banner.component';
 
 
 
@@ -54,7 +59,12 @@ import { PasswordChangeComponent } from './user/password-change/password-change.
     LoadingComponent,
     ConfirmEqualValidatorDirective,
     FooterComponent,
-    PasswordChangeComponent
+    PasswordChangeComponent,
+    OffersComponent,
+    ProductCardComponent,
+    ProductFilterComponent,
+    ProductListComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
