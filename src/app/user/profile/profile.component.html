@@ -8,13 +8,13 @@
         <div class="form-row">
           <!-- Default input -->
           <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input [(ngModel)]="email" name="email" type="email" 
+            <label for="email">Email</label>
+            <input [(ngModel)]="email" name="email" type="email"
             class="form-control" disabled placeholder="Email" required>
           </div>
           <!-- Default input -->
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Username</label>
+            <label for="username">Username</label>
             <input type="text" [(ngModel)]="username" name="username" class="form-control" disabled id="username"
               placeholder="username" required>
           </div>
@@ -23,13 +23,13 @@
 
         <!-- Default input -->
         <div class="form-group">
-          <label for="inputAddress">firstName</label>
+          <label for="firstName">firstName</label>
           <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control" id="firstName"
             placeholder="firstName" required>
         </div>
         <!-- Default input -->
         <div class="form-group">
-          <label for="inputAddress2">lastName </label>
+          <label for="lastName">lastName </label>
           <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" id="lastName"
             placeholder="lastName" required>
         </div>
@@ -37,14 +37,14 @@
         <div class="form-row">
           <!-- Default input -->
           <div class="form-group col-md-6">
-            <label for="inputCity">country</label>
+            <label for="country">country</label>
             <input type="text" [(ngModel)]="country" name="country" class="form-control" id="country"
               placeholder="country" required>
           </div>
           <!-- Default input -->
           <div class="form-group col-md-6">
-            <label for="inputZip">city</label>
-            <input type="text" [(ngModel)]="city" 
+            <label for="city">city</label>
+            <input type="text" [(ngModel)]="city"
             name="city" class="form-control" id="city" placeholder="city" required>
           </div>
         </div>
@@ -65,10 +65,6 @@
           <a>
             <div class="mask rgba-white-slight"></div>
           </a>
-        </div>
-        <!-- Card footer -->
-        <div class="card-footer text-muted text-center">
-          <button class="btn btn-outline-danger">Upload Profile</button>
         </div>
 
       </div>

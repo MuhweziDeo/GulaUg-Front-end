@@ -4,13 +4,21 @@
       <div class="col-md-4">
         <div class="profile-img">
           <img
-            [src]="user.image || 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=' +
+            [src]="profileImage || 'https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=' +
             'Blank&facialHairType=Blank&clotheType=CollarSweater&clotheColor=' +
              'Gray01&eyeType=Default&eyebrowType=Default&mouthType=Serious&skinColor=Light'"
             alt="" />
           <div *ngIf="user.username === currentUser.username" class="file btn btn-lg btn-primary">
             Change Photo
-            <input type="file" name="file" />
+            <input type="file" name="file" (change)="upload($event)"
+                   accept="image/png, image/jpeg" />
+            <div *ngIf="showUploadProgress" class="progress">
+              <div class="progress-bar progress-bar-striped bg-success"
+                   role="progressbar"
+                   [style.width]="(uploadProgress$ | async) + '%'" [attr.aria-valuenow]="(uploadProgress$ | async)"
+                   aria-valuemin="0" aria-valuemax="100">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -37,7 +45,7 @@
         </div>
       </div>
       <div class="col-md-2">
-        <a *ngIf="user.username === currentUser.username" 
+        <a *ngIf="user.username === currentUser.username"
           class="profile-edit-btn" routerLink="/profile">Edit
             Profile</a>
       </div>
@@ -60,6 +68,7 @@
               </div>
               <div class="col-md-6">
                 <p>{{user.User.id}}</p>
+
               </div>
             </div>
             <div class="row">
@@ -68,7 +77,7 @@
               </div>
               <div class="col-md-6 row">
                 <div class="col-md-2">
-                    <mdb-checkbox  
+                    <mdb-checkbox
                     (change)="activateDeActivateAccount($event)"
                     [disabled]="!currentUser.isAdmin || loading"
                     [checked]="user.User.active"
@@ -76,12 +85,12 @@
                     </mdb-checkbox>
                 </div>
                 <div *ngIf="currentUser.isAdmin" class="col-md-8">
-                  <span 
-                  mdbTooltip="Check to activate or Deactivate account" 
+                  <span
+                  mdbTooltip="Check to activate or Deactivate account"
                   placement="top"
                   [class.text-danger]="user.User.active"
                   [class.text-success]="!user.User.active"
-                  class="text-sm font-weight-bold">{{ user.User.active ? 
+                  class="text-sm font-weight-bold">{{ user.User.active ?
                   'Deactivate' : 'Activate' }} Account
                 </span>
               </div>
@@ -90,7 +99,7 @@
                           <span class="sr-only text-sm">Loading...</span>
                         </div>
                   </div>
-                  
+
               </div>
             </div>
             <div class="row">
@@ -209,7 +218,7 @@
   <!-- Jumbotron -->
   <div class="mt-5 container">
     <div class="text-dark text-center py-5 px-4">
-        <div *ngIf="loading" class="spinner-border text-danger" 
+        <div *ngIf="loading" class="spinner-border text-danger"
             style="width: 10rem; height: 10rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>

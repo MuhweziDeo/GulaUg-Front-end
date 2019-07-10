@@ -8,12 +8,13 @@ const initialState =  {
 export const authReducer  = (state = initialState, action) => {
     switch (action.type) {
         case 'Auth-Success':
-        return {
+          const { payload: {username, isAdmin, image } } = action;
+          return {
             ...state,
             isAuthenticated: true,
-            username: action.payload.username,
-            isAdmin: action.payload.isAdmin,
-            image: action.payload.image
+            username,
+            isAdmin,
+            image
         };
         case 'Auth-Failure':
         return {
