@@ -9,6 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app.routing.module';
@@ -89,7 +90,8 @@ import { BannerComponent } from './shared/banner/banner.component';
       messagingSenderId: '1049988843166',
       appId: '1:1049988843166:web:695f6e687540ab1b'
     }),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFireAuthModule
 
   ],
   providers: [
