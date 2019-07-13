@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {NotFoundComponent} from './not-found/not-found.component';
@@ -76,7 +79,17 @@ import { BannerComponent } from './shared/banner/banner.component';
     ToastrModule.forRoot(),
     SocialLoginModule,
     NgbModule,
-    NgReduxModule
+    NgReduxModule,
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyA1zpxPec-LD2L8CaEmR4LVmTklgPKOzt4',
+      authDomain: 'gulaug.firebaseapp.com',
+      databaseURL: 'https://gulaug.firebaseio.com',
+      projectId: 'gulaug',
+      storageBucket: 'gulaug.appspot.com',
+      messagingSenderId: '1049988843166',
+      appId: '1:1049988843166:web:695f6e687540ab1b'
+    }),
+    AngularFireStorageModule
 
   ],
   providers: [

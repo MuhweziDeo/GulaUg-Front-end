@@ -17,8 +17,6 @@ export class NavigationBarComponent implements OnInit {
   public username: string;
   loading = false;
   isAdmin = false;
-  authorizationSubscription: Subscription;
-
    constructor(
     private authService: AuthService,
     private appEventService: AppEventService,
@@ -34,6 +32,9 @@ export class NavigationBarComponent implements OnInit {
         this.isAdmin = isAdmin;
         this.image = image;
         this.username = username;
+      });
+      this.appEventService.subscribe('profileUpdated', (data) => {
+        this.image = data.content.image;
       });
   }
   logOut() {
