@@ -89,7 +89,7 @@ export class SocialAuthenticationComponent implements OnInit {
         .then(res => {
           resolve(res);
           // @ts-ignore
-          const {credential: { accessToken, secret}, user: {photoURL}} = res;
+          const {credential: { accessToken, secret}} = res;
           this.authService.socialLogin('twitter',
             {oauth_token: accessToken, oauth_token_secret: secret })
             .subscribe(resp => {
@@ -111,12 +111,12 @@ export class SocialAuthenticationComponent implements OnInit {
               }
             }, error => {
               this.loading = false;
-              this.toast.error(error.error.message);
+              this.toast.error(error.error.message || 'Unable to Login with Twitter' );
             });
         })
         .catch(e => {
           this.loading = false;
-          this.toast.error(e.error.message);
+          this.toast.error(e.error.message || 'Unable to Login with Twitter');
           reject(e);
         });
     });
