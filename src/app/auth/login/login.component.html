@@ -19,7 +19,7 @@
                 </div>
                 <form class="user" #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
                   <div class="form-group">
-                    <input required #email="ngModel" ngModel name="email" type="email"
+                    <input required #email="ngModel" ngModel name="email" email
                       class="form-control form-control-user" aria-describedby="emailHelp"
                       placeholder="Enter Email Address...">
                     <span class="text-danger" *ngIf="email.touched && email.invalid">Valid email required</span>
@@ -40,7 +40,7 @@
                   <button [disabled]="loginForm.invalid || loading" class="btn btn-primary btn-user btn-block">
                     Login
                   </button>
-                 
+
                   <hr>
                   <app-social-authentication></app-social-authentication>
                 </form>
