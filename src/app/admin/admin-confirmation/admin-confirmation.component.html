@@ -16,9 +16,9 @@
             </div>
             <form #confirmationForm="ngForm" (ngSubmit)="handleConfirmation(confirmationForm)">
               <div class="form-group">
-                <input type="text" 
-                required 
-                class="form-control form-control-user" 
+                <input type="text"
+                required
+                class="form-control form-control-user"
                 ngModel #username="ngModel" name="username" placeholder="Enter username">
               </div>
               <div class="form-group row">
@@ -28,19 +28,19 @@
                     <span class="text-danger" *ngIf="password.touched && password.invalid">Please enter valid
                       password</span>
                   </div>
-  
+
                   <div class="col-sm-6">
-                    <input ngModel appConfirmEqualDirective="password" name="confirm"
-                     #confirm="ngModel" required type="password"
+                    <input ngModel appConfirmEqualDirective="password" name="confirmPassword"
+                     #confirmPassword="ngModel" required type="password"
                       class="form-control form-control-user" placeholder="Repeat Password">
-                    <span class="text-danger" *ngIf="confirm.touched && confirm.errors?.required">
-                      confirm password field is required 
+                    <span class="text-danger" *ngIf="confirmPassword.touched && confirmPassword.errors?.required">
+                      confirm password field is required
                     </span>
-                    <span class="text-danger" *ngIf="confirm.touched && confirm.errors?.notEqual && !confirm.errors?.required">
-                        password and confirm password must match
+                    <span class="text-danger" *ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual && !confirmPassword.errors?.required">
+                        password and password confirmation password must match
                     </span>
                   </div>
-          
+
                 </div>
               <div class="form-group">
                 <div class="spinner-border text-danger" role="status" *ngIf="loading">
@@ -52,7 +52,7 @@
                   Submit
                 </button>
               </div>
-              
+
             </form>
           </div>
         </div>

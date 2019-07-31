@@ -31,6 +31,7 @@ export class AdminConfirmationComponent implements OnInit {
 
   handleConfirmation(form: NgForm) {
       const data = form.value;
+      console.log(data);
       this.loading = true;
       this.adminService.confirmAdminUser(data, this.token).subscribe(res => {
           if (res.success) {
